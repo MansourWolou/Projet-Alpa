@@ -1,12 +1,45 @@
-// lib/app.ts
-import * as root from "./routes/index"
-import express = require('express');
+import express    = require('express');
+import bodyParser = require('body-parser');
+import path       = require('path');
 
-// Create a new express application instance
-const app: express.Application = express();
 
-app.use('/', root)
+const PORT: number = 8080;
+const PUBLIC_DIR = '../public'
+const app = express();
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
-});
+import {indexRoute} from './routes/index';
+import {userRoute } from './routes/users';
+
+
+class HttpServer {
+  port: number;
+
+  constructor(port: number) {
+    this.port = port;
+  }
+
+  public onStart(): void {
+    let app: express.Application = express();
+    
+    app.set('views',path.join(__dirname,'../views'));
+    app.set('view engine', 'jade')
+
+   // app.use(logger('dev'))  je sais pas a quoi ça sert
+    app.use(bodyParser.json()); 
+    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(express.static(PUBLIC_DIR));
+    
+
+    app.listen(this.port, () => {
+      console.log("Application lancée à l'adresse http://localhost:" + this.port);
+    });
+
+    app.get('/',  indexRoute)
+    app.get('/user',userRoute);
+
+    
+  }
+}
+
+let server: HttpServer = new HttpServer(PORT)
+server.onStart();

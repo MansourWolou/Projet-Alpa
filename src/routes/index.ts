@@ -1,9 +1,9 @@
+import express  = require('express');
 
-let express = require('express');
-let router = express.Router();
+let router   = express.Router();
 
-/* GET home page. */
- router.get('/', function(req, res) {
-  res.send('Hello world');
+router.get('/',(req:express.Request , res:express.Response )=>{
+  res.render('index');
 });
-module.exports = router
+
+export {router as indexRoute};
