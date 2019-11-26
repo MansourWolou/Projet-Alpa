@@ -7,5 +7,5 @@ const express_1 = __importDefault(require("express"));
 let router = express_1.default.Router();
 exports.userRoute = router;
 router.get("/user", (req, res) => {
-    res.render("index");
+    res.render("user");
 });

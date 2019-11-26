@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import path from "path";
+require("dotenv").config();
 
 const PORT: number = 8080;
 const PUBLIC_DIR = "../public";
@@ -29,7 +30,12 @@ class HttpServer {
 
     app.listen(this.port, () => {
       console.log(
-        "Application lancée à l'adresse http://localhost:" + this.port
+        "Application lancée à l'adresse http://localhost:" +
+          this.port +
+          " " +
+          process.env.cle +
+          "  " +
+          process.env.email
       );
     });
 
