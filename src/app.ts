@@ -20,7 +20,7 @@ class HttpServer {
     let app: express.Application = express();
 
     app.set("views", path.join(__dirname, "../views"));
-    app.set("view engine", "jade");
+    app.set("view engine", "pug");
 
     // app.use(logger('dev'))  je sais pas a quoi ça sert
     app.use(bodyParser.json());
