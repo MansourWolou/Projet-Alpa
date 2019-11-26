@@ -12,10 +12,12 @@
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "^4.16.4",
+    "firebase-admin": "^8.8.0",
     "http-errors": "~1.6.3",
-    "jade": "~1.11.0",
     "morgan": "~1.9.1",
     "nodemon": "^1.19.4",
+    "pug": "^2.0.4",
+    "ts-lint": "^4.5.1",
     "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.7.2"
   },
