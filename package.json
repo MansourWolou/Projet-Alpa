@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "tsc --w",
-    "dev": "ts-node-dev --respawn --transpileOnly ./src/*.ts",
+    "dev": "ts-node-dev --respawn --transpileOnly src/app.ts",
     "prod": "tsc && ts-node ./build/app.js"
   },
   "dependencies": {
@@ -18,12 +18,13 @@
     "nodemon": "^1.19.4",
     "pug": "^2.0.4",
     "ts-lint": "^4.5.1",
-    "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.7.2"
   },
   "description": "projet d'amour",
   "main": "app.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "ts-node-dev": "^1.0.0-pre.44"
+  },
   "author": "Mansour &  Bertyn",
   "license": "ISC"
 }
