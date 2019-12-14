@@ -11,7 +11,7 @@ import { indexRoute } from "./routes/index";
 import { userRoute } from "./routes/users";
 
 class HttpServer {
-  port: number;
+  port: number; 
 
   constructor(port: number) {
     this.port = port;
