@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import path from "path";
 import * as firebase from  "firebase" ;
-import * as firebaseui from "firebaseui"; 
+import * as firebaseui from "firebaseui";  
 
 
 require("dotenv").config();
