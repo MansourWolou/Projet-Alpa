@@ -1,6 +1,7 @@
 import express from "express";
 import * as firebase from  "firebase" ;
 
+
 let router = express.Router();
 
 var firebaseConfig = {
@@ -13,12 +14,12 @@ var firebaseConfig = {
   appId: process.env.APP_ID,
   measurementId: process.env.MEASUREMENT_ID
 };
-
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-router.get("/log", (req: express.Request, res: express.Response) => {
+var pageLog = router.post("/log", (req: express.Request, res: express.Response) => {
 
+    
 const txtEmail     = document.getElementById("txtEmail");
 const txtPassword  = document.getElementById("txtPassword");
 const txtUsername  = document.getElementById("txtUsername");
@@ -29,17 +30,47 @@ const btnSignup    = document.getElementById("btnSignup");
 
 btnLogin?.addEventListener('click',e => {
   // get email , userName and password
-  let email:string;
-   email =  txtEmail?.nodeValue;
+  const email =  txtEmail?.nodeValue;
   const pass  =  txtPassword?.nodeValue;
   const userName= txtUsername?.nodeValue;
   const auth  = firebase.auth();
   // sign in 
-  auth.signInWithEmailAndPassword(email,pass);
+  if ((typeof email  === "string")&&(typeof pass === "string")) {
+    const Promise = auth.signInWithEmailAndPassword(email,pass)
+    Promise.catch(e => console.log(e.message));
+  }
+  
+})
+// add signup event
+btnSignup?.addEventListener('click',e =>{
+// get email , userName and password
+const email =  txtEmail?.nodeValue;//todo:check for real email
+const pass  =  txtPassword?.nodeValue;
+const userName= txtUsername?.nodeValue;
+const auth  = firebase.auth();
+// sign in 
+if ((typeof email  === "string")&&(typeof pass === "string")) {
+  const Promise = auth.createUserWithEmailAndPassword(email,pass)
   Promise.catch(e => console.log(e.message));
+}
+
+})
+
+// add a realtime listener
+firebase.auth().onAuthStateChanged(firebaseUser => {
+  if(firebaseUser){
+    console.log(firebaseUser);
+  }else{
+    console.log('not logged in');
+  }
 })
 
   res.render("log");
 });
 
-export { router as logRoute };
+//var signIn  = router.post("/log/signIn", (req: express.Request, res: express.Response) => {res.render("log");})
+
+
+
+export { pageLog as logRoute };
+//export { signIn as signInRoute  };

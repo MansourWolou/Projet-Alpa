@@ -7,7 +7,7 @@ import * as firebaseui from "firebaseui";
 import { indexRoute } from "./routes/index";
 import { userRoute } from "./routes/users";
 import { logRoute  } from "./routes/log";
-
+//import { signInRoute } from "./routes/log";
 
 
 require('dotenv').config();
@@ -36,7 +36,7 @@ class HttpServer {
     // app.use(logger('dev'))  je sais pas a quoi ça sert
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(express.static(PUBLIC_DIR));
+    app.use(express.static(__dirname + '../Public/'));
 
     app.listen(this.port, () => {
       console.log(
@@ -48,7 +48,8 @@ class HttpServer {
 
     app.get("/", indexRoute);
     app.get("/user", userRoute);
-    app.get("/log",logRoute);
+    app.post("/log",logRoute);
+    //app.post("/log/signIn",signInRoute);
   }
 }
 
