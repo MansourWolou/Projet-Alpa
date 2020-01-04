@@ -25,6 +25,7 @@ class HttpServer {
 
     // app.use(logger('dev'))  je sais pas a quoi ça sert
     app.use(bodyParser.json());
+    app.use(express.static(path.join(__dirname, "../public")));
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(express.static(PUBLIC_DIR));
 

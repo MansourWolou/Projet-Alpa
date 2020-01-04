@@ -22,13 +22,16 @@ class HttpServer {
         app.set("view engine", "pug");
         // app.use(logger('dev'))  je sais pas a quoi ça sert
         app.use(body_parser_1.default.json());
+        app.use(express_1.default.static(path_1.default.join(__dirname, "../public")));
         app.use(body_parser_1.default.urlencoded({ extended: true }));
         app.use(express_1.default.static(PUBLIC_DIR));
         app.listen(this.port, () => {
             console.log("Application lancée à l'adresse http://localhost:" +
                 this.port +
                 " " +
-                process.env.Bertyn);
+                process.env.cle +
+                "  " +
+                process.env.email);
         });
         app.get("/", index_1.indexRoute);
         app.get("/user", users_1.userRoute);

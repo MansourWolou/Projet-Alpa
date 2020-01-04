@@ -1,12 +1,10 @@
-block layout
-
 doctype html
 html(lang="en")
   head
     meta(charset="utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
-    link(rel="stylesheet", href="/stylesheets/style.css")
+    link(rel="stylesheet" href="css/style.css")
     title Projet Alpa: #{title}
   body
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
@@ -31,11 +29,12 @@ html(lang="en")
               a.dropdown-item(href='#') Something else here
           li.nav-item
             a.nav-link.disabled(href='#' tabindex='-1' aria-disabled='true') Disabled
-      form.form-inline.my-2.my-lg-0
-        input.form-control.mr-sm-2(type='search' placeholder='Search' aria-label='Search')
-        button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
-      block content
+        form.form-inline.my-2.my-lg-0
+          input.form-control.mr-sm-2(type='search' placeholder='Search' aria-label='Search')
+          button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
+    include ../include_modal/inscription
+    block content
 
-    footer.
-    block scripts
+    
+    include ../include/footer
       
