@@ -6,12 +6,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const path_1 = __importDefault(require("path"));
-require("dotenv").config();
-const PORT = 8080;
-const PUBLIC_DIR = "../public";
-const app = express_1.default();
 const index_1 = require("./routes/index");
 const users_1 = require("./routes/users");
+const log_1 = require("./routes/log");
+const auth_1 = require("./routes/auth");
+//import { signInRoute } from "./routes/log";
+require('dotenv').config();
+const PORT = 8080; //TODO : mettre ça dans le .env
+const PUBLIC_DIR = "../public";
+const app = express_1.default();
 class HttpServer {
     constructor(port) {
         this.port = port;
@@ -23,15 +26,15 @@ class HttpServer {
         // app.use(logger('dev'))  je sais pas a quoi ça sert
         app.use(body_parser_1.default.json());
         app.use(body_parser_1.default.urlencoded({ extended: true }));
-        app.use(express_1.default.static(PUBLIC_DIR));
+        app.use(express_1.default.static(__dirname + '../Public/'));
         app.listen(this.port, () => {
             console.log("Application lancée à l'adresse http://localhost:" +
-                this.port +
-                " " +
-                process.env.Bertyn);
+                this.port);
         });
         app.get("/", index_1.indexRoute);
         app.get("/user", users_1.userRoute);
+        app.get("/log", log_1.logRoute);
+        app.post("/log/auth", auth_1.logAuth);
     }
 }
 let server = new HttpServer(PORT);

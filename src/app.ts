@@ -7,6 +7,7 @@ import * as firebaseui from "firebaseui";
 import { indexRoute } from "./routes/index";
 import { userRoute } from "./routes/users";
 import { logRoute  } from "./routes/log";
+import { logAuth   } from  "./routes/auth";
 //import { signInRoute } from "./routes/log";
 
 
@@ -48,8 +49,8 @@ class HttpServer {
 
     app.get("/", indexRoute);
     app.get("/user", userRoute);
-    app.post("/log",logRoute);
-    //app.post("/log/signIn",signInRoute);
+    app.get("/log",logRoute);
+    app.post("/log/auth",logAuth);
   }
 }
 

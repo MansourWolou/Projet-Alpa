@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    form(method='POST' action='/log/auth')
+        label(for='UserName') UserName : 
+        input(type='text' name='UserName' id="txtUsername") 
+        label(for='email') Email : 
+        input(type='email' name='email' id="txtEmail")
+        label(for='Password') Password : 
+        input(type='password' name='Password' id="txtPassword") 
+        button(type='submit' name='btnLogin' value='btnLogin' id="btnLogin") sign in
+        button(type='submit' name='btnSignup' id="btnSignup") sign up
