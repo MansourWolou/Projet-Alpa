@@ -1,0 +1,18 @@
+body {
+
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #00B7FF;
+}
+
+.masthead {
+    color: rgb(15, 24, 160);
+    height: 80vh;
+    min-height: 500px;
+    background-image: url('../img/banner.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
