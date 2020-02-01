@@ -1,7 +1,7 @@
 extends layout
 
 block content
-    form(method='POST' action='/log/auth')
+    form(method='POST' action='/log/signIn')
         label(for='UserName') UserName : 
         input(type='text' name='UserName' id="txtUsername") 
         label(for='email') Email : 
@@ -9,4 +9,17 @@ block content
         label(for='Password') Password : 
         input(type='password' name='Password' id="txtPassword") 
         button(type='submit' name='btnLogin' value='btnLogin' id="btnLogin") sign in
+    br  
+    br
+    br
+    br
+    form(method='POST' action='/log/signUp')
+        label(for='UserName') UserName : 
+        input(type='text' name='UserName' id="txUsername") 
+        label(for='email') Email : 
+        input(type='email' name='email' id="txEmail")
+        label(for='Password') Password : 
+        input(type='password' name='Password' id="txPassword")
+        //mettre la date de naissance
+        //verify password
         button(type='submit' name='btnSignup' id="btnSignup") sign up

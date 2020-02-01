@@ -8,8 +8,8 @@ import { indexRoute } from "./routes/index";
 import { userRoute } from "./routes/users";
 import { logRoute  } from "./routes/log";
 import { logAuth   } from  "./routes/auth";
-//import { signInRoute } from "./routes/log";
-
+import { signIn } from "./routes/signIn";
+import { signUp } from "./routes/signup";
 
 require('dotenv').config();
 
@@ -29,6 +29,20 @@ class HttpServer {
   }
 
   public onStart(): void {
+    
+var firebaseConfig = {
+  apiKey: process.env.APIKEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  databaseURL: process.env.DATABASE_URL,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASUREMENT_ID
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
     let app: express.Application = express();
 
     app.set("views", path.join(__dirname, "../views"));
@@ -50,7 +64,9 @@ class HttpServer {
     app.get("/", indexRoute);
     app.get("/user", userRoute);
     app.get("/log",logRoute);
-    app.post("/log/auth",logAuth);
+    //app.post("/log/auth",logAuth);
+    app.post("/log/signIn",signIn);
+    app.post("/log/signUp",signUp);
   }
 }
 
